@@ -1,20 +1,31 @@
 #include "Particle.h"
 
+using namespace MathUtility;
+
 Particle::~Particle() {}
 
-void Particle::Initialize(Model* model) { 
+void Particle::Initialize(Model* model) {
 	assert(model);
 
 	model_ = model;
 	worldTransform_.Initialize();
 
+	objectColor_.Initialize();
+	color_ = {1, 1, 0, 1};
 }
 
 void Particle::Update() {
 
-	worldTransform_.TransferMatrix(); }
+	objectColor_.SetColor(color_);
+
+	worldTransform_.translation_ += {0.0f, 0.1f, 0.0f};
+
+	worldTransform_.TransferMatrix();
+
+	worldTransform_.UpdateMatrix();
+}
 
 void Particle::Draw(Camera& camera) {
 	// モデル描画
-	model_->Draw(worldTransform_, camera);
+	model_->Draw(worldTransform_, camera, &objectColor_);
 }
