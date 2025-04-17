@@ -2,8 +2,21 @@
 
 Particle::~Particle() {}
 
-void Particle::Initialize() {}
+void Particle::Initialize(Model* model) { 
+	assert(model);
 
-void Particle::Update() {}
+	model_ = model;
+	worldTransform_.Initialize();
 
-void Particle::Draw() {}
+}
+
+void Particle::Update() {
+
+	worldTransform_.TransferMatrix(); }
+
+void Particle::Draw(Camera& camera) {
+	// モデル描画
+	model_->Draw(worldTransform_, camera);
+}
+
+

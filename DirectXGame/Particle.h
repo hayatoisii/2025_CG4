@@ -8,11 +8,11 @@ class Particle {
 public:
 	~Particle();
 
-	void Initialize();
+	void Initialize(Model* model);
 
 	void Update();
 
-	void Draw();
+	void Draw(Camera& camera);
 
 private:
 	// ワールド変換データ
