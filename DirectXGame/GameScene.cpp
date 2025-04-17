@@ -31,5 +31,4 @@ void GameScene::Draw() {
 
 	Model::PostDraw();
 
-
 }

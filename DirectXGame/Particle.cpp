@@ -18,5 +18,3 @@ void Particle::Draw(Camera& camera) {
 	// モデル描画
 	model_->Draw(worldTransform_, camera);
 }
-
-
