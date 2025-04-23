@@ -8,7 +8,7 @@ class Particle {
 public:
 	~Particle();
 
-	void Initialize(Model* model, Vector3 position);
+	void Initialize(Model* model, Vector3 position, Vector3 velocity);
 
 	void Update();
 
@@ -24,5 +24,7 @@ private:
 	ObjectColor objectColor_;
     // 色の数値
 	Vector4 color_;
+
+	KamataEngine::Vector3 velocity_;
 
 };
