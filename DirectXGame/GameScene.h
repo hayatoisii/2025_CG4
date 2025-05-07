@@ -1,12 +1,11 @@
 #pragma once
 #include "KamataEngine.h"
-#include "Particle.h"
 #include "MT.h"
+#include "Particle.h"
 
 using namespace KamataEngine;
 
-class GameScene 
-{
+class GameScene {
 public:
 	~GameScene();
 
@@ -28,5 +27,4 @@ private:
 	Particle* particle_ = nullptr;
 
 	std::list<Particle*> particles_;
-
 };
