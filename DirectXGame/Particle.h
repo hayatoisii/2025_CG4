@@ -1,5 +1,5 @@
 #pragma once
-
+#include "algorithm"
 #include "KamataEngine.h"
 
 using namespace KamataEngine;
@@ -14,6 +14,8 @@ public:
 
 	void Draw(Camera& camera);
 
+	bool IsFinished() { return isFinished_; }
+
 private:
 	// ワールド変換データ
 	WorldTransform worldTransform_;
@@ -26,5 +28,9 @@ private:
 	Vector4 color_;
 
 	KamataEngine::Vector3 velocity_;
+
+	bool isFinished_ = false;
+	float counter_ = 0.0f;
+	const float KDuration = 1.0f;
 
 };
