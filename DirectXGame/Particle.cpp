@@ -1,7 +1,7 @@
 #include "Particle.h"
 
 using namespace MathUtility;
-
+/*/
 Particle::~Particle() {}
 
 void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
@@ -50,3 +50,4 @@ void Particle::Draw(Camera& camera) {
 	// モデル描画
 	model_->Draw(worldTransform_, camera, &objectColor_);
 }
+/*/

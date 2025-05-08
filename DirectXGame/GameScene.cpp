@@ -8,18 +8,19 @@ std::mt19937 randomEngine(seedGenerator());
 std::uniform_real_distribution<float> distribution(-1.0f, 1.0f);
 
 GameScene::~GameScene() {
-
+	/*/
 	for (Particle* particle : particles_) {
 		delete particle;
 	}
 	particles_.clear();
 
 	delete modelParticle_;
+	/*/
 }
 
 void GameScene::Initialize() {
 	// 3Dモデルデータの生成
-	modelParticle_ = Model::CreateSphere(4, 4);
+	//modelParticle_ = Model::CreateSphere(4, 4);
 
 	// カメラの初期化
 	camera_.Initialize();
@@ -28,6 +29,8 @@ void GameScene::Initialize() {
 }
 
 void GameScene::Update() {
+
+	/*/
 	// パーティクルの更新
 	for (auto& particle : particles_) {
 		particle->Update();
@@ -45,6 +48,7 @@ void GameScene::Update() {
 	if (rand() % 20 == 0) {
 		ParticleBorn(position);
 	}
+	/*/
 }
 
 void GameScene::Draw() {
@@ -52,13 +56,14 @@ void GameScene::Draw() {
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 	Model::PreDraw(dxCommon->GetCommandList());
 
-	for (auto& particle : particles_) {
-		particle->Draw(camera_);
-	}
+	//for (auto& particle : particles_) {
+    //		particle->Draw(camera_);
+	//}
 
 	Model::PostDraw();
 }
 
+/*/
 void GameScene::ParticleBorn(Vector3 position) {
 	// パーティクルの生成
 	for (int i = 0; i < 80; i++) {
@@ -71,3 +76,4 @@ void GameScene::ParticleBorn(Vector3 position) {
 		particles_.push_back(particle);
 	}
 }
+/*/

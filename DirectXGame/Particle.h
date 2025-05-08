@@ -3,7 +3,7 @@
 #include "KamataEngine.h"
 
 using namespace KamataEngine;
-
+/*/
 class Particle {
 public:
 	~Particle();
@@ -34,3 +34,4 @@ private:
 	const float KDuration = 1.0f;
 
 };
+/*/
