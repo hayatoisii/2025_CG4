@@ -10,15 +10,15 @@ using namespace MathUtility;
 
 Particle::~Particle() {}
 
-void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
+void Particle::Initialize(Model* model, Vector3 position, Vector3 rotate, Vector3 scale,Vector3 velocity) {
 	assert(model);
 
 	model_ = model;
 	worldTransform_.Initialize();
 
 	worldTransform_.translation_ = position;
-	worldTransform_.scale_ = {0.2f, 2.0f, 0.2f};
-	worldTransform_.rotation_ = {0, 0, static_cast<float>(M_PI) / 4.0f};
+	worldTransform_.scale_ = scale;
+	worldTransform_.rotation_ = rotate;
 	velocity_ = velocity;
 
 	objectColor_.Initialize();

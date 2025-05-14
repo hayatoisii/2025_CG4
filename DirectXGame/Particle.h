@@ -8,7 +8,7 @@ class Particle {
 public:
 	~Particle();
 
-	void Initialize(Model* model, Vector3 position, Vector3 velocity);
+	void Initialize(Model* model, Vector3 position, Vector3 rotate, Vector3 scale, Vector3 velocity);
 
 	void Update();
 

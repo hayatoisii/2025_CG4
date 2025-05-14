@@ -15,7 +15,7 @@ public:
 
 	void Draw();
 
-	void ParticleBorn(Vector3 position);
+	void ParticleBorn(Vector3 position, Vector3 rotate, Vector3 scale);
 
 private:
 	// パーティクル3Dモデルデータ

@@ -43,8 +43,10 @@ void GameScene::Update() {
 	});
 	
 	Vector3 position = {0, 0, 0};
+	Vector3 rotate = {0.0f, 0.0f, 0.0f};
+	Vector3 scale = {0.2f, 2.0f, 0.2f};
 
-		ParticleBorn(position);
+		ParticleBorn(position, rotate, scale);
 }
 
 void GameScene::Draw() {
@@ -60,12 +62,12 @@ void GameScene::Draw() {
 }
 
 
-void GameScene::ParticleBorn(Vector3 position) {
+void GameScene::ParticleBorn(Vector3 position, Vector3 rotate, Vector3 scale) {
 	// パーティクルの生成
 	for (int i = 0; i < 1; i++) {
 		Particle* particle = new Particle(); // ローカル変数を使用
 		Vector3 velocity = {0, 0, 0};
-		particle->Initialize(modelParticle_, position, velocity); // 正しいオブジェクトに対して呼び出し
+		particle->Initialize(modelParticle_, position, rotate, scale, velocity); // 正しいオブジェクトに対して呼び出し
 		particles_.push_back(particle);
 	}
 }
