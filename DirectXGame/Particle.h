@@ -31,6 +31,6 @@ private:
 
 	bool isFinished_ = false;
 	float counter_ = 0.0f;
-	const float KDuration = 1.0f;
+	const float KDuration = 0.5f;
 
 };
