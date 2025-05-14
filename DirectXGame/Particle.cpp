@@ -1,7 +1,13 @@
 #include "Particle.h"
+#include <math.h> 
+#define _USE_MATH_DEFINES
+#include <cmath> 
+#include <cassert>
+#include <corecrt_math_defines.h>
+
 
 using namespace MathUtility;
-/*/
+
 Particle::~Particle() {}
 
 void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
@@ -11,8 +17,8 @@ void Particle::Initialize(Model* model, Vector3 position, Vector3 velocity) {
 	worldTransform_.Initialize();
 
 	worldTransform_.translation_ = position;
-	worldTransform_.scale_ = {0.1f, 0.1f, 0.1f};
-
+	worldTransform_.scale_ = {0.2f, 2.0f, 0.2f};
+	worldTransform_.rotation_ = {0, 0, static_cast<float>(M_PI) / 4.0f};
 	velocity_ = velocity;
 
 	objectColor_.Initialize();
@@ -30,6 +36,7 @@ void Particle::Update() {
 	worldTransform_.translation_.y += velocity_.y;
 	worldTransform_.translation_.z += velocity_.z;
 
+	/*/
 	if (isFinished_) {
 		return;
 	}
@@ -39,6 +46,7 @@ void Particle::Update() {
 		counter_ = KDuration;
 		isFinished_ = true;
 	}
+	/*/
 
 	color_.w = std::clamp(1.0f - counter_ / KDuration, 0.0f, 1.0f);
 
@@ -50,4 +58,3 @@ void Particle::Draw(Camera& camera) {
 	// モデル描画
 	model_->Draw(worldTransform_, camera, &objectColor_);
 }
-/*/
