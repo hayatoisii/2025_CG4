@@ -27,7 +27,6 @@ void Particle::Initialize(Model* model, Vector3 position, Vector3 rotate, Vector
 
 	color_ = {0, 0, 0, 0};
 	objectColor_.Initialize();
-	objectColor_.SetColor(color_);
 
 	worldTransform_.TransferMatrix();
 	worldTransform_.UpdateMatrix();
