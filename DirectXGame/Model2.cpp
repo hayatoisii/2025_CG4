@@ -98,6 +98,11 @@ Model2* Model2::CreateCube(uint32_t count) {
 	}
 
 	instance->InitializeFromVertices(vertices, indices);
+	if (instance->defaultMaterial_) {
+		instance->defaultMaterial_->textureFilename_ = "uvChecker.png";
+		instance->defaultMaterial_->Update();
+		instance->defaultMaterial_->LoadTexture("");
+	}
 	return instance;
 }
 
