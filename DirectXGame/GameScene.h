@@ -17,7 +17,7 @@ public:
 
 private:
 	// パーティクル3Dモデルデータ
-	Model2* modelParticle_ = nullptr;
+	Model2* model2_ = nullptr;
 
 	Camera camera_;
 

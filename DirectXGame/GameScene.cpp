@@ -1,7 +1,7 @@
 #include "GameScene.h"
 
 GameScene::~GameScene() { 
-	delete modelParticle_;
+	delete model2_;
 	Model2::StaticFinalize();
 }
 
@@ -10,7 +10,7 @@ void GameScene::Initialize() {
 	Model2::StaticInitialize();
 
 	// 3Dモデルデータの生成
-	modelParticle_ = Model2::CreateSphere(4, 4);
+	model2_ = Model2::CreateSphere(4, 4);
 
 	// カメラの初期化
 	camera_.Initialize();
@@ -29,8 +29,8 @@ void GameScene::Draw() {
 	Model2::PreDraw(dxCommon->GetCommandList());
 
 	// モデルの描画
-	if (modelParticle_) {
-		modelParticle_->Draw(worldTransform, camera_);
+	if (model2_) {
+		model2_->Draw(worldTransform, camera_);
 	}
 
 	Model2::PostDraw();
