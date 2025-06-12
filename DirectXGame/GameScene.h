@@ -1,6 +1,7 @@
 #pragma once
 #include "KamataEngine.h"
 #include "Particle.h"
+#include "Model2.h"
 
 using namespace KamataEngine;
 
@@ -17,11 +18,13 @@ public:
 
 private:
 	// パーティクル3Dモデルデータ
-	Model* modelParticle_ = nullptr;
+	Model2* modelParticle_ = nullptr;
 
 	Camera camera_;
 
 	// パーティクル
 	Particle* particle_ = nullptr;
+
+	WorldTransform worldTransform;
 
 };

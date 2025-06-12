@@ -4,31 +4,31 @@ GameScene::~GameScene() { delete modelParticle_; }
 
 void GameScene::Initialize() {
 
+	Model2::StaticFinalize();
+
 	// 3Dモデルデータの生成
-	modelParticle_ = Model::CreateSphere(4, 4);
+	modelParticle_ = Model2::CreateSphere(4, 4);
 
 	// カメラの初期化
 	camera_.Initialize();
 
-	// パーティクルの生成
-	particle_ = new Particle();
-	particle_->Initialize(modelParticle_);
+	worldTransform.Initialize();
 }
 
 void GameScene::Update() {
 	// パーティクルの更新
-	particle_->Update();
-
+	// particle_->Update();
 }
 
-void GameScene::Draw() { 
-	
+void GameScene::Draw() {
+
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
-	Model::PreDraw(dxCommon->GetCommandList());
+	Model2::PreDraw(dxCommon->GetCommandList());
 
-	particle_->Draw(camera_);
-
-	Model::PostDraw();
-
+	// モデルの描画
+	if (modelParticle_) {
+		modelParticle_->Draw(worldTransform, camera_);
+	}
+	Model2::PostDraw();
 }
