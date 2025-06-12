@@ -10,7 +10,7 @@ void GameScene::Initialize() {
 	Model2::StaticInitialize();
 
 	// 3Dモデルデータの生成
-	model2_ = Model2::CreateCube();
+	model2_ = Model2::CreateCube(1);
 
 	// カメラの初期化
 	camera_.Initialize();

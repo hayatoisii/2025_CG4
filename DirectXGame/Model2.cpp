@@ -49,51 +49,58 @@ Model2* Model2::CreateFromOBJ(const std::string& modelname, bool smoothing) {
 	return instance;
 }
 
-Model2* Model2::CreateCube() {
+// 四角形
+Model2* Model2::CreateCube(uint32_t count) {
 	// メモリ確保
 	Model2* instance = new Model2;
 	std::vector<Mesh::VertexPosNormalUv> vertices;
 	std::vector<uint32_t> indices;
 
 	// 頂点数
-	const uint32_t kNumVertices = 4;
+	const uint32_t kVerticesPerQuad = 4;
 	// インデックス数
-	const uint32_t kNumIndices = 6;
-	vertices.resize(kNumVertices);
-	indices.resize(kNumIndices);
+	const uint32_t kIndicesPerQuad = 6;
 
-	// 左下
-	vertices[0].pos = {-0.5f, -0.5f, 0.0f};
-	vertices[0].uv = {0.0f, 1.0f};
-	vertices[0].normal = {0.0f, 0.0f, 1.0f};
+	vertices.resize(count * kVerticesPerQuad);
+	indices.resize(count * kIndicesPerQuad);
 
-	// 左上
-	vertices[1].pos = {-0.5f, 0.5f, 0.0f};
-	vertices[1].uv = {0.0f, 0.0f};
-	vertices[1].normal = {0.0f, 0.0f, 1.0f};
+	for (uint32_t i = 0; i < count; ++i) {
+		uint32_t vOffset = i * kVerticesPerQuad;
+		uint32_t iOffset = i * kIndicesPerQuad;
 
-	// 右下
-	vertices[2].pos = {0.5f, -0.5f, 0.0f};
-	vertices[2].uv = {1.0f, 1.0f};
-	vertices[2].normal = {0.0f, 0.0f, 1.0f};
+		// Xを横に
+		float offsetX = static_cast<float>(i);
 
-	// 右上
-	vertices[3].pos = {0.5f, 0.5f, 0.0f};
-	vertices[3].uv = {1.0f, 0.0f};
-	vertices[3].normal = {0.0f, 0.0f, 1.0f};
+		// 頂点
+		vertices[vOffset + 0].pos = {-0.5f + offsetX, -0.5f, 0.0f};
+		vertices[vOffset + 1].pos = {-0.5f + offsetX, 0.5f, 0.0f};
+		vertices[vOffset + 2].pos = {0.5f + offsetX, -0.5f, 0.0f};
+		vertices[vOffset + 3].pos = {0.5f + offsetX, 0.5f, 0.0f};
 
-	// インデックス
-	indices[0] = 0;
-	indices[1] = 1;
-	indices[2] = 2;
+		// uv
+		vertices[vOffset + 0].uv = {0.0f, 1.0f};
+		vertices[vOffset + 1].uv = {0.0f, 0.0f};
+		vertices[vOffset + 2].uv = {1.0f, 1.0f};
+		vertices[vOffset + 3].uv = {1.0f, 0.0f};
 
-	indices[3] = 2;
-	indices[4] = 1;
-	indices[5] = 3;
+		// 法線
+		for (int j = 0; j < 4; ++j) {
+			vertices[vOffset + j].normal = {0.0f, 0.0f, 1.0f};
+		}
+
+		// インデックス
+		indices[iOffset + 0] = vOffset + 0;
+		indices[iOffset + 1] = vOffset + 1;
+		indices[iOffset + 2] = vOffset + 2;
+		indices[iOffset + 3] = vOffset + 2;
+		indices[iOffset + 4] = vOffset + 1;
+		indices[iOffset + 5] = vOffset + 3;
+	}
 
 	instance->InitializeFromVertices(vertices, indices);
 	return instance;
 }
+
 
 Model2* Model2::CreateSphere(uint32_t divisionVertial, uint32_t divisionHorizontal) {
 	// メモリ確保
