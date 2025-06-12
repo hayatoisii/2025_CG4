@@ -3,7 +3,7 @@
 
 Particle::~Particle() {}
 
-void Particle::Initialize(Model* model) { 
+void Particle::Initialize(Model2* model) { 
 	assert(model);
 
 	model_ = model;

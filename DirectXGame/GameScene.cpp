@@ -17,7 +17,7 @@ void GameScene::Initialize() {
 
 void GameScene::Update() {
 	// パーティクルの更新
-	// particle_->Update();
+	 particle_->Update();
 }
 
 void GameScene::Draw() {
