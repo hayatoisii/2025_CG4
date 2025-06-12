@@ -139,6 +139,8 @@ public: // 静的メンバ関数
 
 	//四角形
 	static Model2* CreateCube(uint32_t squareCount);
+	//円
+	static Model2* CreateRing(uint32_t divide, float outerRadius, float innerRadius);
 
 	/// <summary>
 	/// 描画前処理
