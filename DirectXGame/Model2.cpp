@@ -50,12 +50,14 @@ Model2* Model2::CreateFromOBJ(const std::string& modelname, bool smoothing) {
 }
 
 Model2* Model2::CreateCube() {
+	// メモリ確保
 	Model2* instance = new Model2;
 	std::vector<Mesh::VertexPosNormalUv> vertices;
 	std::vector<uint32_t> indices;
 
-	// 頂点数とインデックス数
+	// 頂点数
 	const uint32_t kNumVertices = 4;
+	// インデックス数
 	const uint32_t kNumIndices = 6;
 	vertices.resize(kNumVertices);
 	indices.resize(kNumIndices);
@@ -80,7 +82,7 @@ Model2* Model2::CreateCube() {
 	vertices[3].uv = {1.0f, 0.0f};
 	vertices[3].normal = {0.0f, 0.0f, 1.0f};
 
-	// インデックス（三角形2枚）
+	// インデックス
 	indices[0] = 0;
 	indices[1] = 1;
 	indices[2] = 2;
