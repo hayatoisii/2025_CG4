@@ -1,10 +1,13 @@
 #include "GameScene.h"
 
-GameScene::~GameScene() { delete modelParticle_; }
+GameScene::~GameScene() { 
+	delete modelParticle_;
+	Model2::StaticFinalize();
+}
 
 void GameScene::Initialize() {
 
-	Model2::StaticFinalize();
+	Model2::StaticInitialize();
 
 	// 3Dモデルデータの生成
 	modelParticle_ = Model2::CreateSphere(4, 4);
@@ -16,8 +19,7 @@ void GameScene::Initialize() {
 }
 
 void GameScene::Update() {
-	// パーティクルの更新
-	 particle_->Update();
+
 }
 
 void GameScene::Draw() {
@@ -30,5 +32,6 @@ void GameScene::Draw() {
 	if (modelParticle_) {
 		modelParticle_->Draw(worldTransform, camera_);
 	}
+
 	Model2::PostDraw();
 }

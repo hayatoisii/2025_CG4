@@ -22,9 +22,6 @@ private:
 
 	Camera camera_;
 
-	// パーティクル
-	Particle* particle_ = nullptr;
-
 	WorldTransform worldTransform;
 
 };
