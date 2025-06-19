@@ -69,19 +69,19 @@ Model2* Model2::CreateSquare(uint32_t count) {
 		// 左下
 		vertices[i * 4 + 0].pos = {-0.5f + offsetX, -0.5f, 0.0f};
 		vertices[i * 4 + 0].uv = {0.0f, 1.0f};
-		vertices[i * 4 + 0].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 0].normal = {0.0f, 0.0f, -1.0f};
 		// 左上
 		vertices[i * 4 + 1].pos = {-0.5f + offsetX, 0.5f, 0.0f};
 		vertices[i * 4 + 1].uv = {0.0f, 0.0f};
-		vertices[i * 4 + 1].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 1].normal = {0.0f, 0.0f, -1.0f};
 		// 右下
 		vertices[i * 4 + 2].pos = {0.5f + offsetX, -0.5f, 0.0f};
 		vertices[i * 4 + 2].uv = {1.0f, 1.0f};
-		vertices[i * 4 + 2].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 2].normal = {0.0f, 0.0f, -1.0f};
 		// 右上
 		vertices[i * 4 + 3].pos = {0.5f + offsetX, 0.5f, 0.0f};
 		vertices[i * 4 + 3].uv = {1.0f, 0.0f};
-		vertices[i * 4 + 3].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 3].normal = {0.0f, 0.0f, -1.0f};
 
 		// インデックス
 		indices[i * 6 + 0] = i * 4 + 0;
