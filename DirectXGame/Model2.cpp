@@ -49,7 +49,7 @@ Model2* Model2::CreateFromOBJ(const std::string& modelname, bool smoothing) {
 	return instance;
 }
 
-// 四角形（count枚分横に並べる）
+// 四角形
 Model2* Model2::CreateSquare(uint32_t count) {
 	// メモリ確保
 	Model2* instance = new Model2;
@@ -94,7 +94,6 @@ Model2* Model2::CreateSquare(uint32_t count) {
 
 	instance->InitializeFromVertices(vertices, indices);
 
-	// デフォルトマテリアルにテクスチャを設定（任意）
 	if (instance->defaultMaterial_) {
 		instance->defaultMaterial_->textureFilename_ = "uvChecker.png";
 		instance->defaultMaterial_->Update();
