@@ -113,57 +113,54 @@ Model2* Model2::CreateRing(uint32_t divide, float outerRadius, float innerRadius
 
 	const float radianPerDivide = 2.0f * pi_v<float> / float(divide);
 
-	// 頂点生成
-	for (uint32_t i = 0; i < divide; ++i) {
-		float rad = i * radianPerDivide;
-		float radNext = (i + 1) * radianPerDivide;
+	for (uint32_t index = 0; index < divide; ++index) {
+		float rad = index * radianPerDivide;
+		float radNext = (index + 1) * radianPerDivide;
 
 		float sin = std::sin(rad);
 		float cos = std::cos(rad);
 		float sinNext = std::sin(radNext);
 		float cosNext = std::cos(radNext);
 
-		float u = float(i) / float(divide);
-		float uNext = float(i + 1) / float(divide);
+		float u = float(index) / float(divide);
+		float uNext = float(index + 1) / float(divide);
 
 		// 外側
 		Mesh::VertexPosNormalUv v0;
-		v0.pos = {-sin * outerRadius, cos * outerRadius, 0.0f};
+		v0.pos = {sin * outerRadius, cos * outerRadius, 0.0f};
 		v0.normal = {0.0f, 0.0f, 1.0f};
 		v0.uv = {u, 0.0f};
 
 		Mesh::VertexPosNormalUv v1;
-		v1.pos = {-sinNext * outerRadius, cosNext * outerRadius, 0.0f};
+		v1.pos = {sinNext * outerRadius, cosNext * outerRadius, 0.0f};
 		v1.normal = {0.0f, 0.0f, 1.0f};
 		v1.uv = {uNext, 0.0f};
 
 		// 内側
 		Mesh::VertexPosNormalUv v2;
-		v2.pos = {-sin * innerRadius, cos * innerRadius, 0.0f};
+		v2.pos = {sin * innerRadius, cos * innerRadius, 0.0f};
 		v2.normal = {0.0f, 0.0f, 1.0f};
 		v2.uv = {u, 1.0f};
 
 		Mesh::VertexPosNormalUv v3;
-		v3.pos = {-sinNext * innerRadius, cosNext * innerRadius, 0.0f};
+		v3.pos = {sinNext * innerRadius, cosNext * innerRadius, 0.0f};
 		v3.normal = {0.0f, 0.0f, 1.0f};
 		v3.uv = {uNext, 1.0f};
 
-		// 頂点追加
 		uint32_t base = static_cast<uint32_t>(vertices.size());
-		vertices.push_back(v0); // 0
-		vertices.push_back(v1); // 1
-		vertices.push_back(v2); // 2
-		vertices.push_back(v3); // 3
+		vertices.push_back(v0);
+		vertices.push_back(v1);
+		vertices.push_back(v2);
+		vertices.push_back(v3);
 
-		// インデックス
+		// 時計回りで三角形を作成
 		indices.push_back(base + 0);
-		indices.push_back(base + 2);
 		indices.push_back(base + 1);
+		indices.push_back(base + 2);
 
 		indices.push_back(base + 2);
+		indices.push_back(base + 1);
 		indices.push_back(base + 3);
-		indices.push_back(base + 1);
-
 	}
 
 	Model2* instance = new Model2;
