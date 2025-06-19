@@ -56,55 +56,53 @@ Model2* Model2::CreateSquare(uint32_t count) {
 	std::vector<Mesh::VertexPosNormalUv> vertices;
 	std::vector<uint32_t> indices;
 
-	// 頂点数
-	const uint32_t kVerticesPerQuad = 4;
-	// インデックス数
-	const uint32_t kIndicesPerQuad = 6;
+	// 1枚あたりの頂点・インデックス数
+	const uint32_t kNumVertices = 4;
+	const uint32_t kNumIndices = 6;
 
-	vertices.resize(count * kVerticesPerQuad);
-	indices.resize(count * kIndicesPerQuad);
+	vertices.resize(count * kNumVertices);
+	indices.resize(count * kNumIndices);
 
 	for (uint32_t i = 0; i < count; ++i) {
-		uint32_t vOffset = i * kVerticesPerQuad;
-		uint32_t iOffset = i * kIndicesPerQuad;
-
-		// Xを横に
 		float offsetX = static_cast<float>(i);
 
-		// 頂点
-		vertices[vOffset + 0].pos = {-0.5f + offsetX, -0.5f, 0.0f};
-		vertices[vOffset + 1].pos = {-0.5f + offsetX, 0.5f, 0.0f};
-		vertices[vOffset + 2].pos = {0.5f + offsetX, -0.5f, 0.0f};
-		vertices[vOffset + 3].pos = {0.5f + offsetX, 0.5f, 0.0f};
-
-		// uv
-		vertices[vOffset + 0].uv = {0.0f, 1.0f};
-		vertices[vOffset + 1].uv = {0.0f, 0.0f};
-		vertices[vOffset + 2].uv = {1.0f, 1.0f};
-		vertices[vOffset + 3].uv = {1.0f, 0.0f};
-
-		// 法線
-		for (int j = 0; j < 4; ++j) {
-			vertices[vOffset + j].normal = {0.0f, 0.0f, 1.0f};
-		}
+		// 左下
+		vertices[i * 4 + 0].pos = {-0.5f + offsetX, -0.5f, 0.0f};
+		vertices[i * 4 + 0].uv = {0.0f, 1.0f};
+		vertices[i * 4 + 0].normal = {0.0f, 0.0f, 1.0f};
+		// 左上
+		vertices[i * 4 + 1].pos = {-0.5f + offsetX, 0.5f, 0.0f};
+		vertices[i * 4 + 1].uv = {0.0f, 0.0f};
+		vertices[i * 4 + 1].normal = {0.0f, 0.0f, 1.0f};
+		// 右下
+		vertices[i * 4 + 2].pos = {0.5f + offsetX, -0.5f, 0.0f};
+		vertices[i * 4 + 2].uv = {1.0f, 1.0f};
+		vertices[i * 4 + 2].normal = {0.0f, 0.0f, 1.0f};
+		// 右上
+		vertices[i * 4 + 3].pos = {0.5f + offsetX, 0.5f, 0.0f};
+		vertices[i * 4 + 3].uv = {1.0f, 0.0f};
+		vertices[i * 4 + 3].normal = {0.0f, 0.0f, 1.0f};
 
 		// インデックス
-		indices[iOffset + 0] = vOffset + 0;
-		indices[iOffset + 1] = vOffset + 1;
-		indices[iOffset + 2] = vOffset + 2;
-		indices[iOffset + 3] = vOffset + 2;
-		indices[iOffset + 4] = vOffset + 1;
-		indices[iOffset + 5] = vOffset + 3;
+		indices[i * 6 + 0] = i * 4 + 0;
+		indices[i * 6 + 1] = i * 4 + 1;
+		indices[i * 6 + 2] = i * 4 + 2;
+		indices[i * 6 + 3] = i * 4 + 2;
+		indices[i * 6 + 4] = i * 4 + 1;
+		indices[i * 6 + 5] = i * 4 + 3;
 	}
 
 	instance->InitializeFromVertices(vertices, indices);
+
 	if (instance->defaultMaterial_) {
 		instance->defaultMaterial_->textureFilename_ = "uvChecker.png";
 		instance->defaultMaterial_->Update();
 		instance->defaultMaterial_->LoadTexture("");
 	}
+
 	return instance;
 }
+
 
 Model2* Model2::CreateRing(uint32_t divide, float outerRadius, float innerRadius) {
 	using namespace std;
