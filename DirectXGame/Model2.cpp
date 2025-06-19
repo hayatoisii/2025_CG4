@@ -69,19 +69,19 @@ Model2* Model2::CreateSquare(uint32_t count) {
 		// 左下
 		vertices[i * 4 + 0].pos = {-0.5f + offsetX, -0.5f, 0.0f};
 		vertices[i * 4 + 0].uv = {0.0f, 1.0f};
-		vertices[i * 4 + 0].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 0].normal = {0.0f, 0.0f, -1.0f};
 		// 左上
 		vertices[i * 4 + 1].pos = {-0.5f + offsetX, 0.5f, 0.0f};
 		vertices[i * 4 + 1].uv = {0.0f, 0.0f};
-		vertices[i * 4 + 1].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 1].normal = {0.0f, 0.0f, -1.0f};
 		// 右下
 		vertices[i * 4 + 2].pos = {0.5f + offsetX, -0.5f, 0.0f};
 		vertices[i * 4 + 2].uv = {1.0f, 1.0f};
-		vertices[i * 4 + 2].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 2].normal = {0.0f, 0.0f, -1.0f};
 		// 右上
 		vertices[i * 4 + 3].pos = {0.5f + offsetX, 0.5f, 0.0f};
 		vertices[i * 4 + 3].uv = {1.0f, 0.0f};
-		vertices[i * 4 + 3].normal = {0.0f, 0.0f, 1.0f};
+		vertices[i * 4 + 3].normal = {0.0f, 0.0f, -1.0f};
 
 		// インデックス
 		indices[i * 6 + 0] = i * 4 + 0;
@@ -128,23 +128,23 @@ Model2* Model2::CreateRing(uint32_t divide, float outerRadius, float innerRadius
 		// 外側
 		Mesh::VertexPosNormalUv v0;
 		v0.pos = {sin * outerRadius, cos * outerRadius, 0.0f};
-		v0.normal = {0.0f, 0.0f, 1.0f};
+		v0.normal = {0.0f, 0.0f, -1.0f};
 		v0.uv = {u, 0.0f};
 
 		Mesh::VertexPosNormalUv v1;
 		v1.pos = {sinNext * outerRadius, cosNext * outerRadius, 0.0f};
-		v1.normal = {0.0f, 0.0f, 1.0f};
+		v1.normal = {0.0f, 0.0f, -1.0f};
 		v1.uv = {uNext, 0.0f};
 
 		// 内側
 		Mesh::VertexPosNormalUv v2;
 		v2.pos = {sin * innerRadius, cos * innerRadius, 0.0f};
-		v2.normal = {0.0f, 0.0f, 1.0f};
+		v2.normal = {0.0f, 0.0f, -1.0f};
 		v2.uv = {u, 1.0f};
 
 		Mesh::VertexPosNormalUv v3;
 		v3.pos = {sinNext * innerRadius, cosNext * innerRadius, 0.0f};
-		v3.normal = {0.0f, 0.0f, 1.0f};
+		v3.normal = {0.0f, 0.0f, -1.0f};
 		v3.uv = {uNext, 1.0f};
 
 		uint32_t base = static_cast<uint32_t>(vertices.size());
