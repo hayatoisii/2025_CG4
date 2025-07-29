@@ -15,6 +15,8 @@ void GameScene::Initialize() {
 	graph_ = new Graph();
 	graph_->Initialize();
 
+	font_.Initialize();
+
 	// カメラの初期化
 	camera_.Initialize();
 
@@ -29,6 +31,9 @@ void GameScene::Update() {
 
 	graph_->Update();
 
+	score_++;
+	font_.Set(score_);
+
 }
 
 void GameScene::Draw() {
@@ -40,6 +45,8 @@ void GameScene::Draw() {
 	stage_->Draw();
 
 	graph_->Draw();
+
+	font_.Draw();
 
 	Sprite::PostDraw();
 

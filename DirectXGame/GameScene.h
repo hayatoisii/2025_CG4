@@ -3,6 +3,7 @@
 #include "Stage.h"
 #include "Player.h"
 #include "Graph.h"
+#include "Font.h"
 
 using namespace KamataEngine;
 
@@ -35,5 +36,8 @@ private:
 	Player* player_ = nullptr;
 
 	Graph* graph_ = nullptr;
+
+	Font font_;
+	int score_ = 0;
 
 };
