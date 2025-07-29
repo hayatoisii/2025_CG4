@@ -1,18 +1,17 @@
 #pragma once
 #include "KamataEngine.h"
+#include <cstdint>
 
 using namespace KamataEngine;
 
-class GameScene 
-{
+class TitleScene {
 public:
-	~GameScene();
 
+	~TitleScene();
 	void Initialize();
-
 	void Update();
-
 	void Draw();
+	bool IsEnd() const { return isEnd_; }
 
 private:
 
@@ -20,11 +19,7 @@ private:
 
 	KamataEngine::Sprite* sprite_ = nullptr;
 
-	// 3Dモデルデータ
-	Model* model_ = nullptr;
+	Input* input_ = nullptr;
 
-	Camera camera_;
-
-	WorldTransform worldTransform;
-
+	bool isEnd_ = false;
 };
