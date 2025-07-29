@@ -36,7 +36,6 @@ void Stage::Update() {
 	sprite2_->SetPosition(pos2);
 }
 
-
 void Stage::Draw() {
 	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
 
