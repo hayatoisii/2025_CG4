@@ -1,33 +1,23 @@
 #pragma once
 #include "KamataEngine.h"
-#include "Stage.h"
+#include <cstdint>
 
 using namespace KamataEngine;
 
-class GameScene 
-{
+class Stage {
 public:
-	~GameScene();
-
+	~Stage();
 	void Initialize();
-
 	void Update();
-
 	void Draw();
 
 private:
-
 	uint32_t textureHandle_ = 0;
 
 	KamataEngine::Sprite* sprite_ = nullptr;
+	KamataEngine::Sprite* sprite2_ = nullptr;
 
-	// 3Dモデルデータ
-	Model* model_ = nullptr;
+	Input* input_ = nullptr;
 
-	Camera camera_;
-
-	WorldTransform worldTransform;
-
-	Stage* stage_ = nullptr;
-
+	float scrollSpeed_ = 4.0f;
 };
