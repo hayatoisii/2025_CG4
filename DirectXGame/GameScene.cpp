@@ -9,7 +9,8 @@ void GameScene::Initialize() {
 	stage_ = new Stage();
 	stage_->Initialize();
 
-	stage_->Update();
+	player_ = new Player();
+	player_->Initialize();
 
 	// カメラの初期化
 	camera_.Initialize();
@@ -20,6 +21,8 @@ void GameScene::Initialize() {
 void GameScene::Update() {
 
 	stage_->Update();
+
+	player_->Update();
 
 }
 
@@ -32,4 +35,12 @@ void GameScene::Draw() {
 	stage_->Draw();
 
 	Sprite::PostDraw();
+
+	dxCommon->ClearDepthBuffer();
+
+	Model::PreDraw(dxCommon->GetCommandList());
+
+	player_->Draw();
+
+	Model::PostDraw();
 }

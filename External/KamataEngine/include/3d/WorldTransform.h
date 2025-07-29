@@ -51,6 +51,7 @@ public:
 	/// <summary>
 	/// 定数バッファの取得
 	/// </summary>
+	void UpdateMatarix();
 	/// <returns>定数バッファ</returns>
 	const Microsoft::WRL::ComPtr<ID3D12Resource>& GetConstBuffer() const { return constBuffer_; }
 
