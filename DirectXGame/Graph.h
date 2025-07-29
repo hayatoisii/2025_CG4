@@ -1,25 +1,27 @@
 #pragma once
 #include "KamataEngine.h"
-#include <cstdint>
 
 using namespace KamataEngine;
 
-class TitleScene {
+class Graph {
 public:
 
-	~TitleScene();
+	~Graph() = default;
+	
 	void Initialize();
+
 	void Update();
+	
 	void Draw();
-	bool IsEnd() const { return isEnd_; }
 
 private:
 
 	uint32_t textureHandle_ = 0;
+	uint32_t textureHandle2_ = 0;
 
 	Sprite* sprite_ = nullptr;
+	Sprite* sprite2_ = nullptr;
 
-	Input* input_ = nullptr;
-
-	bool isEnd_ = false;
+	float hp_ = 200.0f;
+	const float hpMax_ = 200.0f;
 };

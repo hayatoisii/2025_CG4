@@ -45,12 +45,5 @@ void Player::Update() {
 }
 
 void Player::Draw() {
-
-	DirectXCommon* dxCommon = DirectXCommon::GetInstance();
-	dxCommon->ClearDepthBuffer();
-	Model::PreDraw(dxCommon->GetCommandList());
-
 	modelPlayer_->Draw(worldTransform,camera_);
-
-	Model::PostDraw();
 }

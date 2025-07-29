@@ -12,6 +12,9 @@ void GameScene::Initialize() {
 	player_ = new Player();
 	player_->Initialize();
 
+	graph_ = new Graph();
+	graph_->Initialize();
+
 	// カメラの初期化
 	camera_.Initialize();
 
@@ -24,6 +27,8 @@ void GameScene::Update() {
 
 	player_->Update();
 
+	graph_->Update();
+
 }
 
 void GameScene::Draw() {
@@ -33,6 +38,8 @@ void GameScene::Draw() {
 	Sprite::PreDraw(dxCommon->GetCommandList());
 
 	stage_->Draw();
+
+	graph_->Draw();
 
 	Sprite::PostDraw();
 
